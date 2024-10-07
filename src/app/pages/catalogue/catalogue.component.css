@@ -1,0 +1,10 @@
+._correct {
+    color: green;
+    font-weight: bold;
+  }
+
+._error {
+    color: red;
+    font-weight: bold;
+  }
+  

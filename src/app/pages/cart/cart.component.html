@@ -1,0 +1,41 @@
+<div style="width: 100%;display: flex;justify-content: end;align-items: center;">
+    <div style="padding: 12px;display: flex;align-items: center;cursor: pointer;">
+        <label>{{storeService.totalPrix()}}</label>
+        <mat-icon>shopping_cart</mat-icon>
+    </div>
+</div>
+<div>
+    <table style="width: 100%;">
+        <thead>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let article of storeService.listSousCommand; let i = index">
+                <td>{{article.title}}</td>
+                <td><input [(ngModel)]="article.quantity" type="number"></td>
+                <td>{{article.prix}}</td>
+                <td><button (click)="delete(article)">delete</button></td>
+                <td style="font-weight: 600;">{{article.quantity*article.prix}}</td>
+              
+            </tr>
+            <tr>
+                <td style="color: red;font-weight: 600;">Total</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="color: red;font-weight: 600;">{{storeService.totalPrix()}}</td>
+            </tr>
+            <tr *ngIf="storeService.totalPrix() > 500">
+                <td style="color: green;font-weight: 600;">But since you exceeded 500 you have a 10% discount</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="color: green;font-weight: 600;">{{storeService.totalPrix() - storeService.totalPrix() * 0.1}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,20 @@
+<div style="position: relative;width: 100%;height: 100%;">
+    <div style="width: 100%;height: 30px;display: flex;justify-content: end;align-items: center;position: fixed;top: 0px;background-color: white;">
+        <div>
+            <!-- <mat-form-field style="min-width: 150px;max-width: 500px;width: 100%;">
+                <mat-label>Filter...</mat-label>
+                <input matInput type="text" [(ngModel)]="filter" (keyup)="filterListProduct()">
+              </mat-form-field> -->
+
+            <input type="text" placeholder="Filter..." [(ngModel)]="filter" (keyup)="filterListProduct()">
+        </div>
+        <div style="padding: 12px;display: flex;align-items: center;cursor: pointer;" (click)="this.storeService.totalPrix() > 40 ? go2Cart() : null">
+            <label>{{ this.storeService.totalPrix() < 50 ? 'Cart disabled for less than 50$ ' :'Check Cart '}}</label>
+            <mat-icon>{{this.storeService.totalPrix() < 50 ? 'remove_shopping_cart' : 'shopping_cart'}}</mat-icon>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <app-article-vue *ngFor="let product of storeService.listProductsFiltred; let i = index " [product]="product" class="col-lg-3 col-md-6 col-sm-12"></app-article-vue>
+    </div>
+</div>
+
